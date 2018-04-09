@@ -1,16 +1,8 @@
-from kivy.app import App
-from kivy.uix.button import Button
-
-
-class TestApp(App):
-    def build(self):
-        return Button(text='Hello World')
-
-TestApp().run()
+from ui.app import MobileApp
 
 
 def main():
-    pass
+    MobileApp().run()
 
 
 if __name__ == "__main__":
