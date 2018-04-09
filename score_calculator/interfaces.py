@@ -1,5 +1,11 @@
 from interface import Interface
 
 
-class CardInterface(Interface):
-    pass
+class ICard(Interface):
+    def get_suit(self):
+        pass
+
+    def get_rank(self):
+        pass
+
+
