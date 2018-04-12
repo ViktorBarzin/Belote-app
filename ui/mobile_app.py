@@ -11,7 +11,7 @@ from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager, Screen
 # from mixins import ChangeScreenMixin
 # from helpers import LabelContainer
-from homescreen import HomeScreen, BeloteGameScreen, MainSection
+from ui.homescreen import HomeScreen, BeloteGameScreen, MainSection
 
 
 # from score_calculator import card

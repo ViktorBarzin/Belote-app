@@ -1,8 +1,8 @@
 from kivy.uix.screenmanager import ScreenManager, Screen
-from mixins import ChangeScreenMixin
+from ui.mixins import ChangeScreenMixin
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.anchorlayout import AnchorLayout
-from helpers import LabelContainer
+from ui.helpers import LabelContainer
 from kivy.uix.widget import Widget
 from kivy.uix.button import Button
 from kivy.uix.label import Label

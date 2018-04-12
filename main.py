@@ -1,4 +1,4 @@
-from mobile_app import MobileApp
+from ui.mobile_app import MobileApp
 # from kivy.app import App
 # from kivy.uix.label import Label
 
