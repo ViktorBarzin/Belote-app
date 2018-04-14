@@ -33,7 +33,6 @@ class MobileApp(App):
         screen_manager.current = 'home_screen'
         # screen_manager.current = 'belote_game_screen'
         return screen_manager
-        # return Label(text='kur')
 
     # def add_screens(self, screen_manager: ScreenManager, screens: List[Screen]):
     #     screen_manager.add_widget(screens)
