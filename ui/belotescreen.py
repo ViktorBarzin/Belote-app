@@ -1,11 +1,15 @@
-from ui.mixins import ChangeScreenMixin
-from kivy.uix.screenmanager import ScreenManager, Screen
-from kivy.uix.button import Button
 from kivy.uix.boxlayout import BoxLayout
+from kivy.app import App
+import os
+from kivy.uix.button import Button
 from kivy.uix.camera import Camera
-# from kivy.core.camera import Camera
+from kivy.uix.screenmanager import ScreenManager, Screen
 from os.path import exists
 from plyer import camera
+from plyer import notification
+from settings import IMAGE_NAME
+from ui.mixins import ChangeScreenMixin
+# from card_recognition import CardDetector
 
 
 class BeloteGameScreen(ChangeScreenMixin, Screen):
@@ -24,24 +28,28 @@ class BeloteGameScreen(ChangeScreenMixin, Screen):
         self.add_widget(self.items)
 
     def do_capture(self, widget):
-        from plyer import notification
-        notification.notify('in do_capture', 'predi')
-        # picture = camera.take_picture('/Internal storage/Download/pls_work.jpg', on_complete=self.camera_callback)
-        from jnius import autoclass
-        print('BB'*40)
-        print(autoclass('org.kivy.android.PythonActivity').mActivity.getExternalCacheDir().getPath())
-        picture = camera.take_picture(autoclass('org.kivy.android.PythonActivity').mActivity.getExternalCacheDir().getPath() + '/pls.jpg', on_complete=self.camera_callback)
-        notification.notify('in do_capture', 'sled')
+        # # TODO: Hardcodes for android !!!
+        # from jnius import autoclass
+        # print(autoclass('org.kivy.android.PythonActivity').mActivity.getExternalCacheDir().getPath())
+        # print(os.path.join(App.get_running_app().user_data_dir, IMAGE_NAME))
+        # picture = camera.take_picture(autoclass('org.kivy.android.PythonActivity').mActivity.getExternalCacheDir().getPath() + '/' + IMAGE_NAME, on_complete=self.camera_callback)
+        # Saves to /sdcard/mobile/capture.jpg  (if lucky)
+        camera.take_picture(os.path.join(App.get_running_app().user_data_dir, IMAGE_NAME), on_complete=self.camera_callback)
+        # notification.notify('in do_capture', 'sled')
 
     def camera_callback(self, filepath):
-        print('B' * 40 + str(picture))
+        # print('C' * 40 + str(filepath))
         if(exists(filepath)):
-            popup = MsgPopup("Picture saved!")
-            popup.open()
+            notification.notify('callback', filepath)
+        #     popup = MsgPopup("Picture saved!")
+        #     popup.open()
         else:
-            popup = MsgPopup("Could not save your picture!")
-            popup.open()
-        return True
+            notification.notify('callback', 'nope')
+        #     popup = MsgPopup("Could not save your picture!")
+        #     popup.open()
+        # return True
+        # CardDetector.main(filepath)
+        # return False
 
 
 class MyCamera(Camera):

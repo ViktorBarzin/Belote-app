@@ -127,7 +127,7 @@ def preprocess_image(image):
     bkg_level = gray[int(img_h/100)][int(img_w/2)]
     thresh_level = bkg_level + BKG_THRESH
 
-    retval,  thresh = cv2.threshold(blur,  thresh_level,  255,  cv2.THRESH_BINARY)
+    retval, thresh = cv2.threshold(blur, thresh_level, 255, cv2.THRESH_BINARY)
 
     import matplotlib.pyplot as plt
     plt.imshow(cv2.cvtColor(thresh,  cv2.COLOR_GRAY2RGB))

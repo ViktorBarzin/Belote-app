@@ -7,9 +7,9 @@
 
 # Import necessary packages
 import sys
+import numpy as np
 import cv2
 import matplotlib.pyplot as plt
-import numpy as np
 import time
 import os
 import Cards
@@ -29,12 +29,14 @@ def main(image_path=''):
 
     # Grab frame from filepath
     # Read as BGR !
-    # image = cv2.imread('Card_Imgs/jack_of_hearts.jpg')  # Test image
-    # image = cv2.imread('/home/viktor/code/python/Belote-app/card_recognition/Card_Imgs/samples/king-of-spades.jpg')  # Test image
-    # image = cv2.imread('/home/viktor/code/python/Belote-app/card_recognition/Card_Imgs/samples/three-of-diamonds.jpg')  # Test image
-    # image = cv2.imread('/home/viktor/code/python/Belote-app/card_recognition/Card_Imgs/samples/16-cards-shuffled.jpg')  # Test image
-    image = cv2.imread('/home/viktor/code/python/Belote-app/card_recognition/Card_Imgs/samples/16-cards.jpg')  # Test image
-    # image = cv2.imread(image_path)
+    image = cv2.imread(image_path)
+    # For debugging, remove in prod
+    if image_path == '':
+        # image = cv2.imread('Card_Imgs/jack_of_hearts.jpg')  # Test image
+        # image = cv2.imread('/home/viktor/code/python/Belote-app/card_recognition/Card_Imgs/samples/king-of-spades.jpg')  # Test image
+        # image = cv2.imread('/home/viktor/code/python/Belote-app/card_recognition/Card_Imgs/samples/three-of-diamonds.jpg')  # Test image
+        # image = cv2.imread('/home/viktor/code/python/Belote-app/card_recognition/Card_Imgs/samples/16-cards-shuffled.jpg')  # Test image
+        image = cv2.imread('/home/viktor/code/python/Belote-app/card_recognition/Card_Imgs/samples/16-cards.jpg')  # Test image
 
     # Pre-process image (gray, blur, and threshold it)
     pre_proc = Cards.preprocess_image(image)
