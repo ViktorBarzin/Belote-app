@@ -1,7 +1,7 @@
 appdirs==1.4.3
 backcall==0.1.0
 -e git+https://github.com/kivy/buildozer.git@d3628f1568a4a3c50465ec817a6d82c52817a3bb#egg=buildozer
-certifi==2018.1.18
+certifi==2022.12.7
 chardet==3.0.4
 colorama==0.3.9
 cycler==0.10.0
